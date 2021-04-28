@@ -35,8 +35,13 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         self.playerName = defaults.string(forKey: "name") ?? "PlayerName"
-        self.gameDuration = defaults.integer(forKey: "gameDuration")
-        self.maxBubbles = defaults.integer(forKey: "maximumBubbles")
+        if let gameDuration = defaults.object(forKey: "gameDuration") {
+            self.gameDuration = gameDuration as! Int
+        }
+        
+        if let maxBubbles = defaults.object(forKey: "maximumBubbles") {
+            self.maxBubbles = maxBubbles as! Int
+        }
         
         initLabels()
     }

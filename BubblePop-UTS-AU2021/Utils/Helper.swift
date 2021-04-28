@@ -27,7 +27,10 @@ struct Helper {
     
     static func getHighestScore() -> Int {
         let players = retrivePlayers()
-        return Int(players[0].score)
+        if players.count > 0 {
+            return Int(players[0].score)
+        }
+        return 0
     }
 
 }
